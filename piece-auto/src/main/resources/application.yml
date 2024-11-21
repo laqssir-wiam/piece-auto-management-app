@@ -1,0 +1,17 @@
+server:
+  port: 9990
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/social_media_book
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
