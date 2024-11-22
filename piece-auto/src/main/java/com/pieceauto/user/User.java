@@ -1,8 +1,6 @@
 package com.pieceauto.user;
 
-import com.books.book.book.Book;
-import com.books.book.history.BookTransactionHistory;
-import com.books.book.role.Role;
+import com.pieceauto.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.awt.print.Book;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -44,10 +43,6 @@ public class User implements UserDetails, Principal {
     private boolean enabled;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
-    @OneToMany(mappedBy = "owner")
-    private List<Book> books;
-    @OneToMany(mappedBy = "user")
-    private List<BookTransactionHistory> histories;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

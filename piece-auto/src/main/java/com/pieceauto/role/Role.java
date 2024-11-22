@@ -1,7 +1,7 @@
 package com.pieceauto.role;
 
-import com.books.book.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pieceauto.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
