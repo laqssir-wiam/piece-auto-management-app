@@ -1,4 +1,4 @@
-package com.pieceauto.pieceauto;
+package com.pieceauto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
