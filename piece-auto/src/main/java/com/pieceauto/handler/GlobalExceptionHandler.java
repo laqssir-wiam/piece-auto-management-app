@@ -1,7 +1,9 @@
 package com.pieceauto.handler;
 
-import com.books.book.exception.ActivationTokenException;
-import com.books.book.exception.OperationNotPermittedException;
+
+import com.pieceauto.exception.ActivationTokenException;
+import com.pieceauto.exception.OperationNotPermittedException;
+
 import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.books.book.handler.BusinessErrorCodes.*;
 import static com.pieceauto.handler.BusinessErrorCodes.*;
 import static org.springframework.http.HttpStatus.*;
 
