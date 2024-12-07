@@ -1,9 +1,10 @@
 package com.pieceauto.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 /**
  * @author WIAM
@@ -16,5 +17,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Setter
 @EntityListeners(AuditingEntityListener.class)
 public class ProdcutCategory {
-
+    @Id
+    @GeneratedValue
+    private Integer id;
+    private String description;
+    @OneToMany(mappedBy = "prodcutCategory")
+    private List<Product> produits;
 }

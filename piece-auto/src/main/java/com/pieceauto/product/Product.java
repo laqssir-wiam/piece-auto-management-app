@@ -1,8 +1,6 @@
 package com.pieceauto.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -18,6 +16,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class Product {
     @Id
+    @GeneratedValue
     private Integer id;
     private String reference;
     private String label;
@@ -25,4 +24,7 @@ public class Product {
     private String quantity;
     private Double price;
     private ProdcutCategory category;
+    @ManyToOne
+    @JoinColumn(name = "category")
+    private ProdcutCategory prodcutCategory;
 }
