@@ -1,5 +1,6 @@
-package com.pieceauto.product;
+package com.pieceauto.category;
 
+import com.pieceauto.product.Product;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
