@@ -2,6 +2,9 @@ package com.pieceauto.product;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * @author WIAM
  **/
@@ -12,4 +15,11 @@ public class ProductService {
     public Product saveProduct(ProductRequest productRequest){
         return  productRepository.save(productMapper.toProduct(productRequest));
     }
+    public Optional<Product> findById(Integer id){
+        return productRepository.findById(id);
+    }
+    public List<Product> findAll(){
+        return productRepository.findAll();
+    }
+
 }
