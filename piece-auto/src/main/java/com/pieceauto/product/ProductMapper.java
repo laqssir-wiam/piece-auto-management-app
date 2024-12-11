@@ -15,7 +15,7 @@ public class ProductMapper {
                 .reference(productRequest.reference())
                 .description(productRequest.description())
                 .price(productRequest.price())
-                .category(prodcutCategoryRepository.getReferenceById(productRequest.category()))
+                .prodcutCategory(prodcutCategoryRepository.getReferenceById(productRequest.category()))
                 .build();
     }
 }

@@ -24,7 +24,6 @@ public class Product {
     private String description;
     private String quantity;
     private Double price;
-    private ProdcutCategory category;
     @ManyToOne
     @JoinColumn(name = "category")
     private ProdcutCategory prodcutCategory;
