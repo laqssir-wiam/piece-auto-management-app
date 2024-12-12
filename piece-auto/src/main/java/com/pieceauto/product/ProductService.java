@@ -23,14 +23,5 @@ public class ProductService {
     public List<Product> findAll(){
         return productRepository.findAll();
     }
-    public Product updateProduct(ProductRequest productRequest, Integer idProd){
-        Product product = findById(idProd).get();
-        product.setPrice(productRequest.price());
-        product.setLabel(productRequest.label());
-        product.setDescription(productRequest.description());
-        product.setQuantity(productRequest.quantity());
-        product.setReference(productRequest.reference());
-        product.setProdcutCategory(prodcutCategoryRepository.findById(productRequest.category()).get());
-        return productRepository.save(product);
-    }
+
 }
