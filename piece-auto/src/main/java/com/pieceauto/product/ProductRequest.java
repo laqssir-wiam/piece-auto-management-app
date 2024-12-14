@@ -1,7 +1,5 @@
 package com.pieceauto.product;
 
-import com.pieceauto.category.ProdcutCategory;
-
 /**
  * @author WIAM
  **/

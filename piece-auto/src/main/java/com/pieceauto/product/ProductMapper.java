@@ -1,13 +1,12 @@
 package com.pieceauto.product;
 
-import com.pieceauto.category.ProdcutCategory;
-import com.pieceauto.category.ProdcutCategoryRepository;
+import com.pieceauto.category.ProductCategoryRepository;
 
 /**
  * @author WIAM
  **/
 public class ProductMapper {
-    private ProdcutCategoryRepository prodcutCategoryRepository;
+    private ProductCategoryRepository productCategoryRepository;
     public Product toProduct(ProductRequest productRequest) {
         return Product.builder()
                 .label(productRequest.label())
@@ -15,7 +14,7 @@ public class ProductMapper {
                 .reference(productRequest.reference())
                 .description(productRequest.description())
                 .price(productRequest.price())
-                .prodcutCategory(prodcutCategoryRepository.getReferenceById(productRequest.category()))
+                .prodcutCategory(productCategoryRepository.getReferenceById(productRequest.category()))
                 .build();
     }
 }

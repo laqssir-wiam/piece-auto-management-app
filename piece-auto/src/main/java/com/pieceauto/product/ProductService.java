@@ -1,6 +1,6 @@
 package com.pieceauto.product;
 
-import com.pieceauto.category.ProdcutCategoryRepository;
+import com.pieceauto.category.ProductCategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +11,16 @@ import java.util.Optional;
  **/
 @Service
 public class ProductService {
-    private ProdcutCategoryRepository prodcutCategoryRepository;
+    private ProductCategoryRepository productCategoryRepository;
     private ProductRepository productRepository;
     private ProductMapper productMapper;
+
+    public ProductService(ProductCategoryRepository productCategoryRepository, ProductRepository productRepository, ProductMapper productMapper) {
+        this.productCategoryRepository = productCategoryRepository;
+        this.productRepository = productRepository;
+        this.productMapper = productMapper;
+    }
+
     public Product saveProduct(ProductRequest productRequest){
         return  productRepository.save(productMapper.toProduct(productRequest));
     }
@@ -23,5 +30,17 @@ public class ProductService {
     public List<Product> findAll(){
         return productRepository.findAll();
     }
-
+    public Product updateProduct(ProductRequest productRequest, Integer idProd){
+        Product product = findById(idProd).get();
+        product.setPrice(productRequest.price());
+        product.setLabel(productRequest.label());
+        product.setDescription(productRequest.description());
+        product.setQuantity(productRequest.quantity());
+        product.setReference(productRequest.reference());
+        product.setProdcutCategory(productCategoryRepository.findById(productRequest.category()).get());
+        return productRepository.save(product);
+    }
+    public void deleteProduct(Product prod){
+         productRepository.delete(prod);
+    }
 }

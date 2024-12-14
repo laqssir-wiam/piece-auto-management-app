@@ -1,6 +1,6 @@
 package com.pieceauto.product;
 
-import com.pieceauto.category.ProdcutCategory;
+import com.pieceauto.category.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -26,5 +26,5 @@ public class Product {
     private Double price;
     @ManyToOne
     @JoinColumn(name = "category")
-    private ProdcutCategory prodcutCategory;
+    private ProductCategory prodcutCategory;
 }

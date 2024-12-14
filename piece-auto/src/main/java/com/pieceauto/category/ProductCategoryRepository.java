@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author WIAM
  **/
-public interface ProdcutCategoryRepository extends JpaRepository<ProdcutCategory,Integer> {
+public interface ProductCategoryRepository extends JpaRepository<ProductCategory,Integer> {
 }

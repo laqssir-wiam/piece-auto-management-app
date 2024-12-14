@@ -17,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
-public class ProdcutCategory {
+public class ProductCategory {
     @Id
     @GeneratedValue
     private Integer id;
