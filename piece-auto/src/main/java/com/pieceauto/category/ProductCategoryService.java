@@ -2,6 +2,8 @@ package com.pieceauto.category;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author WIAM
  **/
@@ -16,5 +18,11 @@ public class ProductCategoryService {
         return ProductCategory.builder()
                 .description(description)
                 .build();
+    }
+    public List<ProductCategory> allProductCategory(){
+        return productCategoryRepository.findAll();
+    }
+    public ProductCategory findProductCategoryById(Integer id){
+        return productCategoryRepository.findById(id).get();
     }
 }
