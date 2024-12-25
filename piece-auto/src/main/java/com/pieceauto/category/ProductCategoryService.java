@@ -25,4 +25,9 @@ public class ProductCategoryService {
     public ProductCategory findProductCategoryById(Integer id){
         return productCategoryRepository.findById(id).get();
     }
+    public ProductCategory updateProductCategory(String description, Integer idCat){
+        ProductCategory productCategory=productCategoryRepository.findById(idCat).get();
+        productCategory.setDescription(description);
+        return productCategoryRepository.save(productCategory);
+    }
 }
