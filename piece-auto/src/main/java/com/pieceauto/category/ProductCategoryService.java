@@ -1,5 +1,6 @@
 package com.pieceauto.category;
 
+import com.pieceauto.product.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,5 +30,9 @@ public class ProductCategoryService {
         ProductCategory productCategory=productCategoryRepository.findById(idCat).get();
         productCategory.setDescription(description);
         return productCategoryRepository.save(productCategory);
+    }
+    public Integer deleteProductCategory(Integer idCat){
+        productCategoryRepository.deleteById(idCat);
+        return idCat;
     }
 }
