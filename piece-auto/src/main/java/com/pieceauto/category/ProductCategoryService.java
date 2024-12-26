@@ -35,4 +35,7 @@ public class ProductCategoryService {
         productCategoryRepository.deleteById(idCat);
         return idCat;
     }
+    public List<Product> allProductOfCategory(Integer idCat){
+        return productCategoryRepository.findById(idCat).get().getProduits();
+    }
 }
