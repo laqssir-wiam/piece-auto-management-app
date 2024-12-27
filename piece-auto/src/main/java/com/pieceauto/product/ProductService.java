@@ -1,5 +1,6 @@
 package com.pieceauto.product;
 
+import com.pieceauto.category.ProductCategory;
 import com.pieceauto.category.ProductCategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,7 @@ public class ProductService {
     public Product updateProduct(ProductRequest productRequest, Integer idProd){
         Product product = findById(idProd).get();
         product.setPrice(productRequest.price());
+        product.setMargin_price(productRequest.margin_price());
         product.setLabel(productRequest.label());
         product.setDescription(productRequest.description());
         product.setQuantity(productRequest.quantity());
@@ -43,4 +45,8 @@ public class ProductService {
     public void deleteProduct(Product prod){
          productRepository.delete(prod);
     }
+    public ProductCategory productCat(Integer idProd){
+        return productRepository.findById(idProd).get().getProdcutCategory();
+    }
+    public
 }

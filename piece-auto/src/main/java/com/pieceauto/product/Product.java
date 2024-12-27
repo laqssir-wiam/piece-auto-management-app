@@ -24,6 +24,7 @@ public class Product {
     private String description;
     private String quantity;
     private Double price;
+    private Double margin_price;
     @ManyToOne
     @JoinColumn(name = "category")
     private ProductCategory prodcutCategory;

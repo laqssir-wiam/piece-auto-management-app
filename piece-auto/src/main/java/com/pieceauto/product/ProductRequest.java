@@ -9,6 +9,7 @@ public record ProductRequest(
          String description,
          String quantity,
          Double price,
+         Double margin_price,
          Integer category
 ) {
 }
