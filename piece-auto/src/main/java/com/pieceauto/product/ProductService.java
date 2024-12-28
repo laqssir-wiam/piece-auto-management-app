@@ -45,8 +45,10 @@ public class ProductService {
     public void deleteProduct(Product prod){
          productRepository.delete(prod);
     }
-    public ProductCategory productCat(Integer idProd){
+    public ProductCategory getCatOfProduct(Integer idProd){
         return productRepository.findById(idProd).get().getProdcutCategory();
     }
-    public
+    public Product getByRef(String ref){
+        return productRepository.findByRef(ref);
+    }
 }
