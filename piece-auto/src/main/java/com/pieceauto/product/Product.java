@@ -1,6 +1,7 @@
 package com.pieceauto.product;
 
 import com.pieceauto.category.ProductCategory;
+import com.pieceauto.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -28,4 +29,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category")
     private ProductCategory prodcutCategory;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user_id;
 }

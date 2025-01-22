@@ -1,5 +1,6 @@
 package com.pieceauto.user;
 
+import com.pieceauto.product.Product;
 import com.pieceauto.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -43,6 +44,8 @@ public class User implements UserDetails, Principal {
     private boolean enabled;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+    @OneToMany(mappedBy = "user_id")
+    private List<Product> produits;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
