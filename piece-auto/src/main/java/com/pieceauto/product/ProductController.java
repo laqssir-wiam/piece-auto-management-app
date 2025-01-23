@@ -5,10 +5,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author WIAM
@@ -26,5 +23,11 @@ public class ProductController {
             Authentication connectedUser
     ) {
         return ResponseEntity.ok(service.saveProduct(request).getId());
+    }
+    @GetMapping("/{product-id}")
+    public ResponseEntity<Product> findBookById(
+            @PathVariable("product-id") Integer productId
+    ) {
+        return ResponseEntity.ok(service.findById(productId));
     }
 }
