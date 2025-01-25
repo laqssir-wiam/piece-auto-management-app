@@ -32,11 +32,19 @@ public class ProductController {
         return ResponseEntity.ok(service.findById(productId));
     }
     @GetMapping
-    public ResponseEntity<PageResponse<Product>> findAllBooks(
+    public ResponseEntity<PageResponse<Product>> findAllProducts(
             @RequestParam(name = "page", defaultValue = "0", required = false) int page,
             @RequestParam(name = "size", defaultValue = "10", required = false) int size,
             Authentication connectedUser
     ) {
         return ResponseEntity.ok(service.findAll(page, size, connectedUser));
+    }
+    @PatchMapping("/shareable/{book-id}")
+    public ResponseEntity<Product> updatePeoduct(
+            @PathVariable("product-id") Integer prodID,
+            @Valid @RequestBody ProductRequest   request,
+            Authentication connectedUser
+    ) {
+        return ResponseEntity.ok(service.updateProduct(request,prodID));
     }
 }
