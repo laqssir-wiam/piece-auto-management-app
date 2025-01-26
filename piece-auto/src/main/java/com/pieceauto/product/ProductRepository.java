@@ -16,4 +16,11 @@ public interface ProductRepository extends JpaRepository<Product,Integer> , JpaS
             WHERE product.reference = :ref
             """)
     Product findByRef(String ref);
+
+    @Query("""
+                SELECT product
+                FROM Product product
+                WHERE product.user_id = :userId
+                """)
+    Page<Product> findAllProducts(Pageable pageable, Integer userId);
 }

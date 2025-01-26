@@ -2,6 +2,13 @@ package com.pieceauto.product;
 
 import com.pieceauto.category.ProductCategory;
 import com.pieceauto.category.ProductCategoryRepository;
+import com.pieceauto.common.PageResponse;
+import com.pieceauto.user.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,8 +35,22 @@ public class ProductService {
     public Product findById(Integer id){
         return productRepository.findById(id).get();
     }
-    public List<Product> findAll(){
-        return productRepository.findAll();
+
+    public PageResponse<Product> findAll(int page, int size, Authentication connectedUser){
+        User user = ((User) connectedUser.getPrincipal());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
+        Page<Product> products=productRepository.findAllProducts(pageable,user.getId());
+        List<Product> prodList = products.stream()
+                .toList();
+        return new PageResponse<>(
+                prodList,
+                products.getNumber(),
+                products.getSize(),
+                products.getTotalElements(),
+                products.getTotalPages(),
+                products.isFirst(),
+                products.isLast()
+        );
     }
     public Product updateProduct(ProductRequest productRequest, Integer idProd){
         Product product = findById(idProd);
