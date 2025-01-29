@@ -19,9 +19,9 @@ import java.util.Optional;
  **/
 @Service
 public class ProductService {
-    private ProductCategoryRepository productCategoryRepository;
-    private ProductRepository productRepository;
-    private ProductMapper productMapper;
+    private final ProductCategoryRepository productCategoryRepository;
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     public ProductService(ProductCategoryRepository productCategoryRepository, ProductRepository productRepository, ProductMapper productMapper) {
         this.productCategoryRepository = productCategoryRepository;

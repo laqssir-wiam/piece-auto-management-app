@@ -1,5 +1,7 @@
 server:
   port: 9990
+  servlet:
+    context-path: /api/v1/
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/social_media_book
@@ -15,7 +17,29 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: user
+    password: user
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
 application:
+  security:
+    jwt:
+      secret-key: feb79e9bdf05df0e806ac052416c91b693ca751f348f6172010b88d7f9a80265
+      expiration: 8772200
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
   file:
     uploads:
       photos-output-path: ./uploads

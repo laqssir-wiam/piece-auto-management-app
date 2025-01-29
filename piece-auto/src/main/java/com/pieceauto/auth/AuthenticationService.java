@@ -1,13 +1,15 @@
 package com.pieceauto.auth;
 
 
+import com.pieceauto.email.EmailService;
+import com.pieceauto.email.EmailTemplateName;
 import com.pieceauto.role.RoleRepository;
 import com.pieceauto.security.JwtService;
 import com.pieceauto.user.Token;
 import com.pieceauto.user.TokenRepository;
 import com.pieceauto.user.User;
 import com.pieceauto.user.UserRepository;
-//import jakarta.mail.MessagingException;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,7 +32,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final RoleRepository roleRepository;
-//    private final EmailService emailService;
+    private final EmailService emailService;
     private final TokenRepository tokenRepository;
 
     @Value("${application.mailing.frontend.activation-url}")

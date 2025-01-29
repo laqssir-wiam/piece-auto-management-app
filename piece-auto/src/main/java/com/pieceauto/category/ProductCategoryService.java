@@ -10,7 +10,7 @@ import java.util.List;
  **/
 @Service
 public class ProductCategoryService {
-    private ProductCategoryRepository productCategoryRepository;
+    private final ProductCategoryRepository productCategoryRepository;
 
     public ProductCategoryService(ProductCategoryRepository productCategoryRepository) {
         this.productCategoryRepository = productCategoryRepository;
