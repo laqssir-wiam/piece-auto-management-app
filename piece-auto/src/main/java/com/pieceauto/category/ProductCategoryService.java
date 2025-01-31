@@ -1,6 +1,13 @@
 package com.pieceauto.category;
 
+import com.pieceauto.common.PageResponse;
 import com.pieceauto.product.Product;
+import com.pieceauto.user.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +27,21 @@ public class ProductCategoryService {
                 .description(description)
                 .build();
     }
-    public List<ProductCategory> allProductCategory(){
-        return productCategoryRepository.findAll();
+    public PageResponse<ProductCategory> allProductCategory(int page, int size, Authentication connectedUser){
+        User user = ((User) connectedUser.getPrincipal());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
+        Page<ProductCategory> productCats=productCategoryRepository.findAllProductCats(pageable,user.getId());
+        List<ProductCategory> prodCatList = productCats.stream()
+                .toList();
+        return new PageResponse<>(
+                prodCatList,
+                productCats.getNumber(),
+                productCats.getSize(),
+                productCats.getTotalElements(),
+                productCats.getTotalPages(),
+                productCats.isFirst(),
+                productCats.isLast()
+        );
     }
     public ProductCategory findProductCategoryById(Integer id){
         return productCategoryRepository.findById(id).get();
@@ -35,7 +55,20 @@ public class ProductCategoryService {
         productCategoryRepository.deleteById(idCat);
         return idCat;
     }
-    public List<Product> allProductOfCategory(Integer idCat){
-        return productCategoryRepository.findById(idCat).get().getProduits();
+    public PageResponse<List<Product>> allProductOfCategory(Integer idCat,int page, int size, Authentication connectedUser){
+        User user = ((User) connectedUser.getPrincipal());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
+        Page<List<Product>> products=productCategoryRepository.allProductOfACategory(pageable,user.getId(),idCat);
+        List<List<Product>> prodList =products.stream()
+                .toList();
+        return new PageResponse<>(
+                prodList,
+                products.getNumber(),
+                products.getSize(),
+                products.getTotalElements(),
+                products.getTotalPages(),
+                products.isFirst(),
+                products.isLast()
+        );
     }
 }

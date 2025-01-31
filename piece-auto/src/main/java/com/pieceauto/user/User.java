@@ -1,5 +1,6 @@
 package com.pieceauto.user;
 
+import com.pieceauto.category.ProductCategory;
 import com.pieceauto.product.Product;
 import com.pieceauto.role.Role;
 import jakarta.persistence.*;
@@ -46,6 +47,8 @@ public class User implements UserDetails, Principal {
     private List<Role> roles;
     @OneToMany(mappedBy = "user_id")
     private List<Product> produits;
+    @OneToMany(mappedBy = "user_id")
+    private List<ProductCategory> productCategories;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

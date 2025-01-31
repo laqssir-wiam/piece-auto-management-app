@@ -39,7 +39,7 @@ public class ProductController {
     ) {
         return ResponseEntity.ok(service.findAll(page, size, connectedUser));
     }
-    @PatchMapping("/shareable/{book-id}")
+    @PatchMapping("/update/{prod-id}")
     public ResponseEntity<Product> updateProduct(
             @PathVariable("product-id") Integer prodID,
             @Valid @RequestBody ProductRequest   request,
