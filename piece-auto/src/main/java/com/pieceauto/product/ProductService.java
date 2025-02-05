@@ -70,6 +70,7 @@ public class ProductService {
         return productRepository.findById(idProd).get().getProdcutCategory();
     }
 
+
     public Product getByRef(String ref){
         return productRepository.findByRef(ref);
     }
