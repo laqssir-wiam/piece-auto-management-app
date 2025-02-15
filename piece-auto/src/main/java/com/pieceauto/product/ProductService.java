@@ -69,8 +69,6 @@ public class ProductService {
     public ProductCategory getCatOfProduct(Integer idProd){
         return productRepository.findById(idProd).get().getProdcutCategory();
     }
-
-
     public Product getByRef(String ref){
         return productRepository.findByRef(ref);
     }
