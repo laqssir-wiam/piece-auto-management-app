@@ -45,6 +45,7 @@ public class BeansConfig {
     public AuditorAware<Integer> auditorAware() {
         return new ApplicationAuditAware();
     }
+
     @Bean
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
